@@ -8,6 +8,11 @@ var bodyParser = require('body-parser');
 var app = express();
 var stringDB = 'mongodb://' + config.database.mongoUser + ':' + config.database.mongoPass + '@' + config.database.mongoHost + ':' + config.database.mongoPort + '/' + config.database.mongoDB;
 console.log('stringDB: ' + stringDB);
+
+// importar rutas
+var usuarioRoutes = require('./routes/usuario');
+var appRoutes = require('./routes/app');
+
 //conexion a la base de datos
 mongoose.connect(stringDB, { useNewUrlParser: true }, (err, res) => {
     if (err) throw err;
@@ -15,12 +20,8 @@ mongoose.connect(stringDB, { useNewUrlParser: true }, (err, res) => {
 });
 
 //Rutas
-app.get('/', (req, res, next) => {
-    res.status(200).json({
-        ok: true,
-        mensaje: 'Peticion realizada correctamente'
-    });
-});
+app.use('/usuario', usuarioRoutes);
+app.use('/', appRoutes);
 
 // Escuchar peticiones
 app.listen(3003, () => {
