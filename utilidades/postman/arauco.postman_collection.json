@@ -1,0 +1,123 @@
+{
+	"info": {
+		"_postman_id": "d6f3888a-3782-4a37-8fb0-b9b07adf5e23",
+		"name": "arauco",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Server",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{http-protocol}}://{{backend-host}}:{{backend-port}}/",
+					"protocol": "{{http-protocol}}",
+					"host": [
+						"{{backend-host}}"
+					],
+					"port": "{{backend-port}}",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usuario: Obtener todos los usuarios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{http-protocol}}://{{backend-host}}:{{backend-port}}/usuario",
+					"protocol": "{{http-protocol}}",
+					"host": [
+						"{{backend-host}}"
+					],
+					"port": "{{backend-port}}",
+					"path": [
+						"usuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usuario: Crear usuario",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nombre",
+							"value": "Andrés Espinoza",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "test2@oopart.cl",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "img",
+							"value": "null",
+							"type": "text"
+						},
+						{
+							"key": "role",
+							"value": "AUDITOR",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{http-protocol}}://{{backend-host}}:{{backend-port}}/usuario",
+					"protocol": "{{http-protocol}}",
+					"host": [
+						"{{backend-host}}"
+					],
+					"port": "{{backend-port}}",
+					"path": [
+						"usuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Denuncia: Obtener todas las denuncias",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{http-protocol}}://{{backend-host}}:{{backend-port}}/denuncia/",
+					"protocol": "{{http-protocol}}",
+					"host": [
+						"{{backend-host}}"
+					],
+					"port": "{{backend-port}}",
+					"path": [
+						"denuncia",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
