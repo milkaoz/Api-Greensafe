@@ -3,26 +3,26 @@ var express = require('express');
 
 var app = express();
 
-var Usuario = require('../models/usuario');
+var Denuncia = require('../models/denuncia');
 
 // ==========================
-// Obtener todos los usuarios
+// Obtener todos las denuncias
 // ==========================
 app.get('/', (req, res, next) => {
 
-    Usuario.find({}, 'nombre email img role')
+    Denuncia.find({}, 'nombre categoria nivelGravedad estado denunciaPrivada fechaCreacion')
         .exec(
-            (err, usuarios) => {
+            (err, denuncias) => {
                 if (err) {
                     return res.status(500).json({
                         ok: false,
-                        mensaje: "Error cargando usuario",
+                        mensaje: "Error cargando denuncia",
                         errors: err
                     });
                 }
                 res.status(200).json({
                     ok: true,
-                    usuarios: usuarios
+                    denuncias: denuncias
                 });
             });
 });
@@ -33,25 +33,26 @@ app.get('/', (req, res, next) => {
 app.post('/', (req, res) => {
     var body = req.body;
 
-    var usuario = new Usuario({
+    var denuncia = new Denuncia({
         nombre: body.nombre,
-        email: body.email,
-        password: body.password,
-        img: body.img,
-        role: body.role
+        categoria: body.categoria,
+        nivelGravedad: body.nivelGravedad,
+        estado: body.estado,
+        coordenadas: body.coordenadas,
+        denunciaPrivada: body.denunciaPrivada
     });
 
-    usuario.save((err, usuarioGuardado) => {
+    denuncia.save((err, denunciaGuardada) => {
         if (err) {
             return res.status(500).json({
                 ok: false,
-                mensaje: "Error al crear usuario",
+                mensaje: "Error al crear denuncia",
                 errors: err
             });
         }
         res.status(201).json({
             ok: true,
-            usuario: usuarioGuardado
+            denuncia: denunciaGuardada
         });
     });
 
