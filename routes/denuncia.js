@@ -4,7 +4,7 @@ var express = require('express');
 var app = express();
 
 var Denuncia = require('../models/denuncia');
-
+var Usuario = require('../models/usuario');
 // ==========================
 // Obtener todos las denuncias
 // ==========================
@@ -34,11 +34,12 @@ app.post('/', (req, res) => {
     var body = req.body;
 
     var denuncia = new Denuncia({
-        nombre: body.nombre,
+        descripcion: body.descripcion,
         categoria: body.categoria,
         nivelGravedad: body.nivelGravedad,
         estado: body.estado,
-        coordenadas: body.coordenadas,
+        latitud: body.latitud,
+        longuitud: body.longuitud,
         denunciaPrivada: body.denunciaPrivada
     });
 

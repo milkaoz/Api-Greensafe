@@ -20,7 +20,7 @@ var estadosValidos = {
 
 var denunciaSchema = new Schema({
 
-    nombre: { type: String, required: [true, 'El nombre es necesario'] },
+    descripcion: { type: String, required: [true, 'La descripcion es necesario'] },
     categoria: { type: String, required: true, enum: categoriasValidos },
     nivelGravedad: { type: String, required: true, enum: nivelGravedadValidos },
     estado: { type: String, required: true, enum: estadosValidos, default: 'Creado' },
@@ -28,9 +28,10 @@ var denunciaSchema = new Schema({
     fechaAtencion: { type: Date, required: false },
     fechaRevision: { type: Date, required: false },
     fechaCierre: { type: Date, required: false },
-    coordenadas: { type: String, required: [true, 'Las cordenadas (latitud, longuitud) son obligatorias'] },
+    latitud: { type: Number, required: [true, 'La latitud es obligatorias'] },
+    longuitud: { type: Number, required: [true, 'La longuitud es obligatorias'] },
     denunciaPrivada: { type: Boolean, required: true },
-    observacioCierre: { type: String, required: false }
+    observacionCierre: { type: String, required: false }
 });
 
 denunciaSchema.plugin(uniqueValidator, { message: '{PATH} debe ser unico' });
