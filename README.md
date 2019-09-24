@@ -3,7 +3,7 @@
 ###### Pasos para hechar a andar el proyecto
 
 * Crear base de datos en mongoDB con el nombre "arauco"
-* Crear usuario de base de datos mongo segun script de archivo --> greensafe/scriptMongo/crearUsuarioMongo
+* Crear usuario de base de datos mongo segun script de archivo --> greensafe/utilidades/script/crearUsuarioMongo
 * npm install
 * npm start
 * acceder a http://localhost:3003/ 
